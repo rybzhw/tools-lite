@@ -30,6 +30,8 @@ def print_dict_diff(in_dict1, in_dict2):
             md5_1 = value.get('md5')
             md5_2 = 'None' if value2 is None else value2.get('md5')
             print('key: %s, md5_1: %s md5_2: %s' % (key, md5_1, md5_2 ))
+            return False
+    return True
 
 
 def main():
@@ -37,7 +39,8 @@ def main():
     xml2 = sys.argv[2]
     dict1 = get_file_infos(xml1)
     dict2 = get_file_infos(xml2)
-    print_dict_diff(dict1, dict2)
+    if print_dict_diff(dict1, dict2):
+        print('xml is same')
 
 if __name__ == '__main__':
     main()
